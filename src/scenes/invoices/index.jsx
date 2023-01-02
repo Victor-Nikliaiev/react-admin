@@ -71,13 +71,12 @@ export const Invoices = () => {
             borderTop: "none",
             backgroundColor: colors.blueAccent[700],
           },
+          "& .MuiCheckBox-root": {
+            color: `${colors.greenAccent[200]} !important`,
+          },
         }}
       >
-        <DataGrid
-          rows={mockDataInvoices}
-          columns={columns}
-          components={{ Toolbar: GridToolbar }}
-        />
+        <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
       </Box>
     </Box>
   );

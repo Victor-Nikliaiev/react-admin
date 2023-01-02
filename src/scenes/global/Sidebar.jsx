@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
@@ -162,7 +162,7 @@ export const Sidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             {menuItems.map(({ title, icon, to, typographyData }) => {
               return (
-                <>
+                <React.Fragment key={crypto.randomUUID()}>
                   {typographyData && (
                     <Typography
                       variant='h6'
@@ -178,9 +178,8 @@ export const Sidebar = () => {
                     icon={icon}
                     selected={selected}
                     setSelected={setSelected}
-                    key={crypto.randomUUID()}
                   />
-                </>
+                </React.Fragment>
               );
             })}
           </Box>

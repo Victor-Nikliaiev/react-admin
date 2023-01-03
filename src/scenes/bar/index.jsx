@@ -7,7 +7,7 @@ export const Bar = () => {
         <Box m='20px'>
             <Header title='BAR CHART' subtitle='Simple Bar Chart' />
             <Box height='75vh'>
-                <BarChart isDashboard={true} />
+                <BarChart />
             </Box>
         </Box>
     );

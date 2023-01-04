@@ -18,173 +18,202 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  return (
-    <MenuItem
-      active={selected === title}
-      style={{ color: colors.grey[100] }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      <Typography>{title}</Typography>
-      <Link to={to} />
-    </MenuItem>
-  );
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    return (
+        <MenuItem
+            active={selected === title}
+            style={{ color: colors.grey[100] }}
+            onClick={() => setSelected(title)}
+            icon={icon}
+        >
+            <Typography>{title}</Typography>
+            <Link to={to} />
+        </MenuItem>
+    );
 };
 
 export const Sidebar = () => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    const [isCollapsed, setIsCollapsed] = useState(false);
+    const [selected, setSelected] = useState("Dashboard");
 
-  const menuItems = [
-    { title: "Dashboard", to: "/", icon: <HomeOutlinedIcon /> },
-    {
-      title: "Manage Team",
-      to: "/team",
-      icon: <PeopleOutlinedIcon />,
-      typographyData: "Data",
-    },
-    {
-      title: "Contacts Information",
-      to: "/contacts",
-      icon: <ContactsOutlinedIcon />,
-    },
-    {
-      title: "Invoices Balances",
-      to: "/invoices",
-      icon: <ReceiptOutlinedIcon />,
-    },
-    {
-      title: "Profile Form",
-      to: "/form",
-      icon: <PersonOutlinedIcon />,
-      typographyData: "Pages",
-    },
-    { title: "Calendar", to: "/calendar", icon: <CalendarTodayOutlinedIcon /> },
-    { title: "FAQ Page", to: "/faq", icon: <HelpOutlinedIcon /> },
-    {
-      title: "Bar Chart",
-      to: "/bar",
-      icon: <BarChartOutlinedIcon />,
-      typographyData: "Charts",
-    },
-    { title: "Pie Chart", to: "/pie", icon: <PieChartOutlineOutlinedIcon /> },
-    { title: "Line Chart", to: "/line", icon: <TimelineOutlinedIcon /> },
-    { title: "Geography Chart", to: "/geography", icon: <MapOutlinedIcon /> },
-  ];
-
-  return (
-    <Box
-      sx={{
-        "& .pro-sidebar-inner": {
-          background: `${colors.primary[400]} !important`,
+    const menuItems = [
+        { title: "Dashboard", to: "/", icon: <HomeOutlinedIcon /> },
+        {
+            title: "Manage Team",
+            to: "/team",
+            icon: <PeopleOutlinedIcon />,
+            typographyData: "Data",
         },
-
-        "& .pro-icon-wrapper": {
-          backgroundColor: "transparent !important",
+        {
+            title: "Contacts Information",
+            to: "/contacts",
+            icon: <ContactsOutlinedIcon />,
         },
-
-        "& .pro-inner-item": {
-          padding: "5px 35px 5px 20px !important",
+        {
+            title: "Invoices Balances",
+            to: "/invoices",
+            icon: <ReceiptOutlinedIcon />,
         },
-
-        "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
+        {
+            title: "Profile Form",
+            to: "/form",
+            icon: <PersonOutlinedIcon />,
+            typographyData: "Pages",
         },
-
-        "& .pro-menu-item.active": {
-          color: "#6870fa !important",
+        {
+            title: "Calendar",
+            to: "/calendar",
+            icon: <CalendarTodayOutlinedIcon />,
         },
-      }}
-    >
-      <ProSidebar collapsed={isCollapsed}>
-        <Menu iconShape='square'>
-          {/* LOGO AND MENU ICON */}
-          <MenuItem
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
-            style={{
-              margin: "10px 0 20px 0",
-              color: colors.grey[100],
+        { title: "FAQ Page", to: "/faq", icon: <HelpOutlinedIcon /> },
+        {
+            title: "Bar Chart",
+            to: "/bar",
+            icon: <BarChartOutlinedIcon />,
+            typographyData: "Charts",
+        },
+        {
+            title: "Pie Chart",
+            to: "/pie",
+            icon: <PieChartOutlineOutlinedIcon />,
+        },
+        { title: "Line Chart", to: "/line", icon: <TimelineOutlinedIcon /> },
+        {
+            title: "Geography Chart",
+            to: "/geography",
+            icon: <MapOutlinedIcon />,
+        },
+    ];
+
+    return (
+        <Box
+            sx={{
+                "& .pro-sidebar-inner": {
+                    background: `${colors.primary[400]} !important`,
+                },
+
+                "& .pro-icon-wrapper": {
+                    backgroundColor: "transparent !important",
+                },
+
+                "& .pro-inner-item": {
+                    padding: "5px 35px 5px 20px !important",
+                },
+
+                "& .pro-inner-item:hover": {
+                    color: "#868dfb !important",
+                },
+
+                "& .pro-menu-item.active": {
+                    color: "#6870fa !important",
+                },
             }}
-          >
-            {!isCollapsed && (
-              <Box
-                display='flex'
-                justifyContent='space-between'
-                alignItems='center'
-                ml='15px'
-              >
-                <Typography variant='h3' color={colors.grey[100]}>
-                  ADMINS
-                </Typography>
-                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOutlinedIcon />
-                </IconButton>
-              </Box>
-            )}
-          </MenuItem>
-
-          {/* USER */}
-          {!isCollapsed && (
-            <Box mb='25px'>
-              <Box display='flex' justifyContent='center' alignItems='center'>
-                <img
-                  alt='profile-user'
-                  width='100px'
-                  height='100px'
-                  src='https://picsum.photos/100'
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
-                />
-              </Box>
-              <Box textAlign='center'>
-                <Typography
-                  variant='h2'
-                  color={colors.grey[100]}
-                  fontWeight='bold'
-                  sx={{
-                    m: "10px 0 0 0",
-                  }}
-                >
-                  Arhis Alight
-                </Typography>
-                <Typography variant='h5' color={colors.greenAccent[500]}>
-                  Fancy Satellite Admin
-                </Typography>
-              </Box>
-            </Box>
-          )}
-
-          {/* MENU ITEMS */}
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            {menuItems.map(({ title, icon, to, typographyData }) => {
-              return (
-                <React.Fragment key={crypto.randomUUID()}>
-                  {typographyData && (
-                    <Typography
-                      variant='h6'
-                      color={colors.grey[300]}
-                      sx={{ m: "15px 0 5px 20px" }}
+        >
+            <ProSidebar collapsed={isCollapsed}>
+                <Menu iconShape='square'>
+                    {/* LOGO AND MENU ICON */}
+                    <MenuItem
+                        onClick={() => setIsCollapsed(!isCollapsed)}
+                        icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
+                        style={{
+                            margin: "10px 0 20px 0",
+                            color: colors.grey[100],
+                        }}
                     >
-                      {typographyData}
-                    </Typography>
-                  )}
-                  <Item
-                    title={title}
-                    to={to}
-                    icon={icon}
-                    selected={selected}
-                    setSelected={setSelected}
-                  />
-                </React.Fragment>
-              );
-            })}
-          </Box>
-        </Menu>
-      </ProSidebar>
-    </Box>
-  );
+                        {!isCollapsed && (
+                            <Box
+                                display='flex'
+                                justifyContent='space-between'
+                                alignItems='center'
+                                ml='15px'
+                            >
+                                <Typography
+                                    variant='h3'
+                                    color={colors.grey[100]}
+                                >
+                                    ADMINS
+                                </Typography>
+                                <IconButton
+                                    onClick={() => setIsCollapsed(!isCollapsed)}
+                                >
+                                    <MenuOutlinedIcon />
+                                </IconButton>
+                            </Box>
+                        )}
+                    </MenuItem>
+
+                    {/* USER */}
+                    {!isCollapsed && (
+                        <Box mb='25px'>
+                            <Box
+                                display='flex'
+                                justifyContent='center'
+                                alignItems='center'
+                            >
+                                <img
+                                    alt='profile-user'
+                                    width='100px'
+                                    height='100px'
+                                    src='https://picsum.photos/100'
+                                    style={{
+                                        cursor: "pointer",
+                                        borderRadius: "50%",
+                                    }}
+                                />
+                            </Box>
+                            <Box textAlign='center'>
+                                <Typography
+                                    variant='h2'
+                                    color={colors.grey[100]}
+                                    fontWeight='bold'
+                                    sx={{
+                                        m: "10px 0 0 0",
+                                    }}
+                                >
+                                    Arhis Alight
+                                </Typography>
+                                <Typography
+                                    variant='h5'
+                                    color={colors.greenAccent[500]}
+                                >
+                                    Fancy Satellite Admin
+                                </Typography>
+                            </Box>
+                        </Box>
+                    )}
+
+                    {/* MENU ITEMS */}
+                    <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+                        {menuItems.map(
+                            ({ title, icon, to, typographyData }) => {
+                                return (
+                                    <React.Fragment key={crypto.randomUUID()}>
+                                        {typographyData && (
+                                            <Typography
+                                                variant='h6'
+                                                color={colors.grey[300]}
+                                                sx={{ m: "15px 0 5px 20px" }}
+                                            >
+                                                {typographyData}
+                                            </Typography>
+                                        )}
+                                        <Item
+                                            title={title}
+                                            to={to}
+                                            icon={icon}
+                                            selected={selected}
+                                            setSelected={setSelected}
+                                        />
+                                    </React.Fragment>
+                                );
+                            }
+                        )}
+                    </Box>
+                </Menu>
+            </ProSidebar>
+        </Box>
+    );
 };

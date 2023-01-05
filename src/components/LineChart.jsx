@@ -6,7 +6,7 @@ import { tokens } from "../theme.js";
 export const LineChart = ({ isDashboard = false }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const baseColor = colors.grey[100];
+    const BASE_COLOR = colors.grey[100];
 
     return (
         <ResponsiveLine
@@ -15,27 +15,27 @@ export const LineChart = ({ isDashboard = false }) => {
                 axis: {
                     domain: {
                         line: {
-                            stroke: baseColor,
+                            stroke: BASE_COLOR,
                         },
                     },
                     legend: {
                         text: {
-                            fill: baseColor,
+                            fill: BASE_COLOR,
                         },
                     },
                     ticks: {
                         line: {
-                            stroke: baseColor,
+                            stroke: BASE_COLOR,
                             strokeWidth: 1,
                         },
                         text: {
-                            fill: baseColor,
+                            fill: BASE_COLOR,
                         },
                     },
                 },
                 legends: {
                     text: {
-                        fill: baseColor,
+                        fill: BASE_COLOR,
                     },
                 },
                 tooltip: {

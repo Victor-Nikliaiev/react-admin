@@ -6,7 +6,7 @@ import { tokens } from "../theme.js";
 export const PieChart = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const baseColor = colors.grey[100];
+    const BASE_COLOR = colors.grey[100];
 
     return (
         <ResponsivePie
@@ -15,32 +15,32 @@ export const PieChart = () => {
                 axis: {
                     domain: {
                         line: {
-                            stroke: baseColor,
+                            stroke: BASE_COLOR,
                         },
                     },
                     legend: {
                         text: {
-                            fill: baseColor,
+                            fill: BASE_COLOR,
                         },
                     },
                     ticks: {
                         line: {
-                            stroke: baseColor,
+                            stroke: BASE_COLOR,
                             strokeWidth: 1,
                         },
                         text: {
-                            fill: baseColor,
+                            fill: BASE_COLOR,
                         },
                         legends: {
                             text: {
-                                fill: baseColor,
+                                fill: BASE_COLOR,
                             },
                         },
                     },
                 },
                 tooltip: {
                     container: {
-                        color: baseColor,
+                        color: BASE_COLOR,
                         background: colors.primary[400],
                     },
                 },
@@ -56,7 +56,7 @@ export const PieChart = () => {
                 modifiers: [["darker", 0.2]],
             }}
             arcLinkLabelsSkipAngle={10}
-            arcLinkLabelsTextColor={baseColor}
+            arcLinkLabelsTextColor={BASE_COLOR}
             arcLinkLabelsThickness={2}
             arcLinkLabelsColor={{ from: "color" }}
             enableArcLabels={false}
